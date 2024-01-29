@@ -19,7 +19,7 @@ f2 = @(x) exp(x);
 
 % Referenslösning med mycket fin nätindelning
 n_elements_ref = 10000;
-[u_ref, ~, ~] = FEM(n_elements_ref, a1, f1, g, @Gauss2Points);
+[u_ref, ~, ~] = FEM_Gauss(n_elements_ref, a1, f1, g, @Gauss2Points);
 
 % Loop över de olika elementstorlekarna
 for i = 1:length(element_sizes)
@@ -27,13 +27,13 @@ for i = 1:length(element_sizes)
     
     % Enpunkts Gausskvadratur
     tic;
-    [u_1, ~, ~] = FEM(n_elements, a1, f1, g, @Gauss1Point);
+    [u_1, ~, ~] = FEM_Gauss(n_elements, a1, f1, g, @Gauss1Point);
     times_1_point(i) = toc;
     errors_1_point(i) = L2Error(u_1, u_ref, n_elements, n_elements_ref);
     
     % Tvåpunkts Gausskvadratur
     tic;
-    [u_2, ~, ~] = FEM(n_elements, a1, f1, g, @Gauss2Points);
+    [u_2, ~, ~] = FEM_Gauss(n_elements, a1, f1, g, @Gauss2Points);
     times_2_points(i) = toc;
     errors_2_points(i) = L2Error(u_2, u_ref, n_elements, n_elements_ref);
 end
@@ -47,7 +47,7 @@ hold off;
 % Lägg till beskrivningar och en legend
 xlabel('Antal element');
 ylabel('L^2-norm av felet');
-title('Beräkningskomplexitet för FEM med olika Gausskvadraturer');
+title('Beräkningskomplexitet för FEM_Gauss med olika Gausskvadraturer');
 legend('Location', 'northeast'); % Visa legenden
 
 % Funktion för att beräkna L^2-normen av felet

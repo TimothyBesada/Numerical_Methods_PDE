@@ -1,4 +1,4 @@
-function [u, K_global, F_global] = FEM(n_elements, a, f, g, GaussQuadrature)
+function [u, K_global, F_global] = FEM_Gauss(n_elements, a, f, g, GaussQuadrature)
     n_nodes = n_elements + 1;
     h = 1 / n_elements;
     nodes = linspace(0, 1, n_nodes)';

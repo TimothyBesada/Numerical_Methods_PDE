@@ -16,11 +16,11 @@ f2 = @(x) exp(x);
 
 nodes = linspace(0, 1, n_nodes)'; % Noder
 
-% Använd FEM för fall 1 med tvåpunkts Gausskvadratur
-[u_1, ~, ~] = FEM(n_elements, a1, f1, g, @Gauss2Points);
+% Använd FEM_Gauss för fall 1 med tvåpunkts Gausskvadratur
+[u_1, ~, ~] = FEM_Gauss(n_elements, a1, f1, g, @Gauss2Points);
 
-% Använd FEM för fall 2 med tvåpunkts Gausskvadratur
-[u_2, ~, ~] = FEM(n_elements, a2, f2, g, @Gauss2Points);
+% Använd FEM_Gauss för fall 2 med tvåpunkts Gausskvadratur
+[u_2, ~, ~] = FEM_Gauss(n_elements, a2, f2, g, @Gauss2Points);
 
 % Visualisera resultaten i en gemensam plot
 plot(nodes, u_1, 'r-', 'DisplayName', 'Fall 1: a(x)=1+x, f(x)=0');
